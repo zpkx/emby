@@ -1,0 +1,29 @@
+---
+version: "2.1"
+services:
+  emby:
+    image: zpkx/emby
+    container_name: embyserver
+    network_mode: host # Enable DLNA and Wake-on-Lan
+    environment:
+      - PUID=1026
+      - PGID=100
+      - TZ=Asia/Shanghai
+    volumes:
+      - /volume1/docker/movie-tools/embyserver/config:/config # Configuration directory
+      - /volume1/video:/data
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+    #dns: #Only if the dns of the local machine is different
+    #  - <dns_ip> 
+    # devices:
+      # - /dev/dri:/dev/dri # VAAPI/NVDEC/NVENC render nodes
+    restart: unless-stopped
+      
+  mb3admin:
+    image: zpkx/mb3admin
+    container_name: mb3admin
+    ports:
+      - 443:443
+    restart: unless-stopped
