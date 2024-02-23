@@ -32,14 +32,14 @@ jobs:
       - name: Build and push mb3admin
         uses: docker/build-push-action@v5
         with:
-          context: "{{defaultContext}}:mb3admin"
+          context: ./mb3admin
           push: true
           tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/emby-mb3admin:latest
           
       - name: Build and push embyserver
         uses: docker/build-push-action@v5
         with:
-          context: "{{defaultContext}}:server"
+          context: ./server
           push: true
           build-args: |
             EMBY_TAG: ${{ env.EMBY_TAG }}
