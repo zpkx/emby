@@ -6,12 +6,9 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
   
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     permissions:
@@ -29,10 +26,16 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Build and push Docker image
+    - name: Build and push mb3admin
       uses: docker/build-push-action@v5
       with:
-        context: .
+        context: "{{defaultContext}}:mb3admin"
         push: true
-        tags: ${{ env.IMAGE_NAME }}:latest
+        tags: zpkx/emby-mb3admin:latest
         
+    - name: Build and push embyserver
+      uses: docker/build-push-action@v5
+      with:
+        context: "{{defaultContext}}:server"
+        push: true
+        tags: zpkx/emby-server:latest
