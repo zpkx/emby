@@ -2,7 +2,7 @@
 version: "2.1"
 services:
   emby:
-    image: zpkx/emby
+    image: ghcr.io/zpkx/emby-server:latest
     container_name: embyserver
     network_mode: host # Enable DLNA and Wake-on-Lan
     environment:
@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
       
   mb3admin:
-    image: zpkx/mb3admin
+    image: ghcr.io/zpkx/emby-mb3admin:latest
     container_name: mb3admin
     ports:
       - 443:443
