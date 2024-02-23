@@ -42,5 +42,5 @@ jobs:
           context: ./server
           push: true
           build-args: |
-            EMBY_TAG: ${{ env.EMBY_TAG }}
+            EMBY_TAG=${{ env.EMBY_TAG }}
           tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/emby-server:${{ env.EMBY_TAG }}
