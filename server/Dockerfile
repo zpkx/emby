@@ -1,5 +1,5 @@
 ARG EMBY_TAG=latest
-FROM linuxserver/emby:${EMBY_TAG}
+FROM emby/embyserver:${EMBY_TAG}
 
 ADD patch /patch
 
