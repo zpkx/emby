@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
   schedule:
-    - cron:  '30 4 8 * *'
+    - cron:  '30 4 8 * *' # Run every month
 
 env:
   REGISTRY: ghcr.io
@@ -39,7 +39,7 @@ jobs:
       - name: Build and push embyserver
         uses: docker/build-push-action@v5
         with:
-          context: ./server
+          context: ./embyserver
           push: true
           build-args: |
             EMBY_TAG=${{ env.EMBY_TAG }}
