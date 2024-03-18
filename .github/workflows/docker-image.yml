@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
   schedule:
-    - cron:  '30 4 8 * *' # Run every month
+    - cron:  '40 4 * * *' # Run 4:40 every day
 
 env:
   REGISTRY: ghcr.io
